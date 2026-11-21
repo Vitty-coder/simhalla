@@ -1,0 +1,14 @@
+{
+  "log_hash": "b2a2fb2b2e15b6ca367a06337e9c2d5e0650cfe986a2b10f6be32fcd8e5af29f",
+  "winner_team": "A",
+  "turns": 28,
+  "events": 281,
+  "outcome": "win",
+  "reason": "last_team_standing",
+  "engine_version": "0.5.0",
+  "ruleset": {
+    "hash": "a35c6f5db4603ef016e0d5eda6875fde2c4026d3da9f35502ced867c0e719b13",
+    "id": "default_ruleset",
+    "version": "0.1.0-provisional"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "attacker_b", "name": "Atacante B", "team": "B",
+  "tags": ["fixture", "physical"],
+  "stats": {"ATK": 140, "DEF": 120, "SPD": 100},
+  "basic_attack": true
+}

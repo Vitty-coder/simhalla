@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "examples/iron_vanguard", "version": "1.0.0", "type": "character",
+ "name": "Vanguardia de hierro", "description": "Guerrero resistente sin dependencias, IA propia.", "author": "Simhalla", "license": "CC0-1.0"}

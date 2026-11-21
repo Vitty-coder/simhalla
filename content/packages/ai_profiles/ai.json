@@ -1,0 +1,22 @@
+{"schema": "simhalla.ai/1", "strategies": {
+  "aggressive": {"type": "scored",
+    "weights": {"damage": 1.0, "lethal": 3.0, "lethal_potential": 0.5, "hit": 0.3, "low_target": 0.5, "status": 0.3, "heal": 0.1, "need": 0.3, "cost": -0.05},
+    "modifiers": [{"when": {"self.hp_ratio": {"lt": 0.2}}, "weights": {"need": 2.0, "heal": 0.5}}]},
+  "defensive": {"type": "scored",
+    "weights": {"damage": 0.5, "lethal": 3.0, "hit": 0.2, "status": 0.6, "heal": 1.2, "need": 2.5, "cost": -0.1},
+    "modifiers": [{"when": {"self.hp_ratio": {"lt": 0.5}}, "weights": {"heal": 2.0, "need": 3.0, "damage": -0.3}}]},
+  "balanced": {"type": "scored",
+    "weights": {"damage": 1.0, "lethal": 3.0, "lethal_potential": 0.3, "hit": 0.2, "low_target": 0.3, "status": 0.4, "heal": 0.8, "need": 1.5, "cost": -0.1},
+    "modifiers": [{"when": {"self.hp_ratio": {"lt": 0.35}}, "weights": {"need": 2.0}}]},
+  "conservative": {"type": "scored",
+    "weights": {"damage": 0.6, "lethal": 3.0, "hit": 0.5, "status": 0.3, "heal": 1.0, "need": 2.0, "cost": -0.8},
+    "wait_below": 0.02},
+  "opportunistic": {"type": "scored",
+    "weights": {"damage": 0.6, "lethal": 8.0, "lethal_potential": 2.0, "hit": 0.4, "low_target": 1.5, "status": 0.8, "heal": 0.4, "need": 1.0, "cost": -0.1},
+    "modifiers": [{"when": {"enemy.lowest_hp_ratio": {"lt": 0.3}}, "weights": {"damage": 1.0}}]},
+  "adaptive": {"type": "state_machine", "initial": "attack", "states": {
+    "attack": {"strategy": {"type": "scored", "weights": {"damage": 1.0, "lethal": 3.0, "hit": 0.3, "low_target": 0.5, "status": 0.3, "need": 0.3, "cost": -0.05}},
+      "transitions": [{"to": "recover", "when": {"self.hp_ratio": {"lt": 0.35}}, "remember": {"incr": {"retreats": 1}}}]},
+    "recover": {"strategy": {"type": "scored", "weights": {"damage": 0.3, "lethal": 3.0, "heal": 1.5, "need": 3.0, "status": 0.5, "cost": -0.1}},
+      "transitions": [{"to": "attack", "when": {"self.hp_ratio": {"ge": 0.6}}}]}}}
+}}

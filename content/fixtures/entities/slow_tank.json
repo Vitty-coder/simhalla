@@ -1,0 +1,6 @@
+{
+  "id": "slow_tank", "name": "Tanque lento", "team": "B",
+  "tags": ["fixture", "tank"],
+  "stats": {"HP": 2000, "ATK": 90, "DEF": 250, "RES": 150, "SPD": 70, "ELEM_RES.fire": 0.5},
+  "basic_attack": true
+}

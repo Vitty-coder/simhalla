@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.ai/1",
+  "title": "IA (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.ai/1"
+    },
+    "ai": {
+      "$ref": "common.schema.json#/definitions/ai_config"
+    },
+    "strategies": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 32,
+      "additionalProperties": {
+        "$ref": "common.schema.json#/definitions/ai_config"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.resources/1",
+  "title": "Recursos (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "resources"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.resources/1"
+    },
+    "resources": {
+      "type": "object",
+      "maxProperties": 32,
+      "additionalProperties": {
+        "$ref": "common.schema.json#/definitions/resource"
+      }
+    }
+  }
+}

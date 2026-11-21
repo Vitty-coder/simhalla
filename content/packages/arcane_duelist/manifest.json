@@ -1,0 +1,4 @@
+{"schema": "simhalla.manifest/1", "id": "examples/arcane_duelist", "version": "1.0.0", "type": "character",
+ "name": "Duelista arcano", "description": "Mago de cristal con artefacto, hechizos importados e IA importada.",
+ "author": "Simhalla", "license": "CC0-1.0", "min_engine_version": "0.1.0",
+ "dependencies": [{"id": "examples/core_spells", "version": "^1.0.0"}, {"id": "examples/basic_ai", "version": "^1.0.0"}]}

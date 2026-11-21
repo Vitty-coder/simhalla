@@ -1,0 +1,39 @@
+// IA: rayo en cadena si hay varios enemigos; sobrecarga con el enfoque lleno; si no, ataque basico al mas debil.
+fn count_foes(view) {
+  let n = 0;
+  for o in view.others {
+    if o.relation == "enemy" and o.alive { n = n + 1; }
+  }
+  return n;
+}
+
+fn weakest(view, targets) {
+  let best = targets[0];
+  let best_hp = 1000000000;
+  for t in targets {
+    for o in view.others {
+      if o.id == t and o.hp < best_hp { best_hp = o.hp; best = t; }
+    }
+  }
+  return best;
+}
+
+fn decide(view) {
+  let foes = count_foes(view);
+  for la in view.legal_actions {
+    if la.ability_id == "chain_bolt" and foes >= 2 {
+      return {ability: "chain_bolt", target: la.targets[0], reason: "varios_enemigos"};
+    }
+  }
+  for la in view.legal_actions {
+    if la.ability_id == "overload" and view.self.resources.focus >= 40 {
+      return {ability: "overload", target: weakest(view, la.targets), reason: "enfoque_lleno", remember: {incr: {sobrecargas: 1}}};
+    }
+  }
+  for la in view.legal_actions {
+    if la.ability_id == "basic_attack" {
+      return {ability: "basic_attack", target: weakest(view, la.targets), reason: "ataque"};
+    }
+  }
+  return {wait: true, reason: "sin_opciones"};
+}

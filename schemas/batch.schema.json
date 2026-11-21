@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.batch/1",
+  "title": "Plan de lote de simulaciones (v1)",
+  "description": "Plan de un lote (docs/SIMULATION.md): escenarios x repeticiones con semillas derivadas de la maestra. Las modalidades (duelo, torneo, biblioteca, versiones, IA, reglamentos, variacion de parametros) se construyen con BatchModes y producen este formato.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scenarios"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.batch/1"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "master_seed": {
+      "type": "integer"
+    },
+    "repetitions": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    },
+    "seed_mode": {
+      "enum": [
+        "per_scenario",
+        "paired"
+      ]
+    },
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ruleset": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "library": {
+          "type": "string"
+        },
+        "ruleset_overrides": {
+          "type": "object"
+        },
+        "initial_overrides": {
+          "type": "object"
+        },
+        "balance": {
+          "type": "object"
+        },
+        "ruleset_data": {
+          "type": "object"
+        },
+        "profile_data": {
+          "type": "object"
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "entities"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "label": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "entities": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 64,
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "package": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "overrides": {
+                  "type": "object"
+                },
+                "patch": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "sides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "params": {
+            "type": "object"
+          },
+          "ruleset_overrides": {
+            "type": "object"
+          },
+          "initial_overrides": {
+            "type": "object"
+          },
+          "repetitions": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

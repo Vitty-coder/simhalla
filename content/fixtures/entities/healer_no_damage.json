@@ -1,0 +1,15 @@
+{
+  "id": "healer_no_damage", "name": "Sanador sin dano", "team": "B",
+  "tags": ["fixture", "support"],
+  "stats": {"MAG": 120},
+  "resources": {"mana": {"initial": 100, "max": 100}},
+  "basic_attack": false,
+  "abilities": [
+    {"id": "mend", "name": "Remendar", "action_type": "main", "targeting": "self",
+     "cost": {"mana": 10},
+     "effects": [{"type": "heal", "formula": "caster.MAG * 0.5"}]}
+  ],
+  "ai": {"type": "priority_list", "rules": [
+    {"ability": "mend", "target": "self", "when": {"self.hp_ratio": {"lt": 1.0}}}
+  ]}
+}

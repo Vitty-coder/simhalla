@@ -1,0 +1,2 @@
+{"schema": "simhalla.character/1", "name": "Vanguardia de hierro", "tags": ["human", "warrior"],
+ "stats": {"HP": 1500, "ATK": 130, "DEF": 200, "RES": 90, "SPD": 85, "ELEM_RES.fire": 0.2}, "basic_attack": true}

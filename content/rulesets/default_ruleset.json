@@ -1,0 +1,93 @@
+{
+  "id": "default_ruleset",
+  "version": "0.1.0-provisional",
+  "atb": {
+    "initiative_threshold": 1000.0,
+    "tie_break": [
+      "initiative_excess_desc",
+      "spd_desc",
+      "slot_asc"
+    ],
+    "timed_events_first": true,
+    "non_positive_spd": "clamp_zero"
+  },
+  "turn": {
+    "main_actions_per_turn": 1,
+    "max_actions_per_turn": 20
+  },
+  "damage": {
+    "rounding": {
+      "mode": "round",
+      "decimals": 0
+    },
+    "min_effective_defense": 0.0,
+    "min_elemental_resistance": -1.0,
+    "max_elemental_resistance": 1.0,
+    "roll_scope": "per_action",
+    "survive_hp": 1.0
+  },
+  "hit": {
+    "min_chance": 0.0,
+    "max_chance": 1.0,
+    "min_crit_chance": 0.0,
+    "max_crit_chance": 1.0
+  },
+  "basic_attack": {
+    "id": "basic_attack",
+    "name": "Ataque basico",
+    "damage_type": "physical",
+    "element": "",
+    "formula": "caster.ATK",
+    "can_crit": true
+  },
+  "victory": {
+    "simultaneous_death": "draw",
+    "limits": {
+      "max_virtual_time": 10000.0,
+      "max_turns": 1000,
+      "max_actions": 5000,
+      "stagnation_turns": 50
+    },
+    "limit_resolution": "draw"
+  },
+  "ai": {
+    "failure_policy": "wait",
+    "visible_fields": [
+      "hp",
+      "hp_max",
+      "initiative",
+      "resources",
+      "statuses"
+    ]
+  },
+  "safety": {
+    "max_events": 200000,
+    "max_event_depth": 32,
+    "max_reaction_chain": 4,
+    "max_scheduled": 1000
+  },
+  "scripting": {
+    "max_instructions": 20000,
+    "max_call_depth": 16,
+    "max_collection": 256,
+    "max_string": 256,
+    "max_mutations": 32,
+    "max_source_bytes": 16384,
+    "max_ast_nodes": 3000
+  },
+  "summons": {
+    "max_per_owner": 8,
+    "max_entities": 64,
+    "on_owner_death": "despawn"
+  },
+  "elements": [
+    "fire",
+    "water",
+    "earth",
+    "air",
+    "lightning",
+    "ice",
+    "light",
+    "dark"
+  ]
+}

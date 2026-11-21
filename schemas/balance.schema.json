@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.balance/1",
+  "title": "Perfil de equilibrio (v1)",
+  "description": "Perfil de equilibrio: estadisticas base gratuitas y modelo de costes (formulas sobre hechos nombrados, ver docs/BALANCE_RULES.md). Las formulas usan la gramatica segura; los hechos disponibles por regla se validan al cargar.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "base_stats"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.balance/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "base_stats": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "points"
+        ],
+        "properties": {
+          "points": {
+            "type": "number",
+            "minimum": 1
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "default_budget": {
+      "type": "string"
+    },
+    "rounding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "round",
+            "floor",
+            "ceil",
+            "trunc"
+          ]
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        }
+      }
+    },
+    "credit_cap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fraction_of_gross"
+      ],
+      "properties": {
+        "fraction_of_gross": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "costs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stats": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "credit_factor": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "default": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "formula"
+              ],
+              "properties": {
+                "formula": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "note": {
+                  "type": "string"
+                },
+                "min": {
+                  "type": "number"
+                }
+              }
+            },
+            "custom": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "formula"
+              ],
+              "properties": {
+                "formula": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "note": {
+                  "type": "string"
+                },
+                "min": {
+                  "type": "number"
+                }
+              }
+            },
+            "rules": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "formula"
+                ],
+                "properties": {
+                  "formula": {
+                    "type": "string",
+                    "maxLength": 512
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "min": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "patterns": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "formula"
+                ],
+                "properties": {
+                  "formula": {
+                    "type": "string",
+                    "maxLength": 512
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "min": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "formula"
+            ],
+            "properties": {
+              "formula": {
+                "type": "string",
+                "maxLength": 512
+              },
+              "note": {
+                "type": "string"
+              },
+              "min": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "ability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "formula"
+          ],
+          "properties": {
+            "formula": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "note": {
+              "type": "string"
+            },
+            "min": {
+              "type": "number"
+            }
+          }
+        },
+        "resource": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "formula"
+          ],
+          "properties": {
+            "formula": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "note": {
+              "type": "string"
+            },
+            "min": {
+              "type": "number"
+            }
+          }
+        },
+        "status_def": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "formula"
+          ],
+          "properties": {
+            "formula": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "note": {
+              "type": "string"
+            },
+            "min": {
+              "type": "number"
+            }
+          }
+        },
+        "weaknesses": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "self_damage": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "formula"
+              ],
+              "properties": {
+                "formula": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "note": {
+                  "type": "string"
+                },
+                "min": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "free": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "basic_attack": {
+              "const": true
+            },
+            "ai": {
+              "const": true
+            },
+            "operations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

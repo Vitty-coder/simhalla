@@ -1,0 +1,71 @@
+{
+  "schema": "simhalla.balance/1",
+  "id": "reference_costs",
+  "version": "0.1.0",
+  "illustrative": true,
+  "description": "Perfil de COSTES ilustrativo para PROBAR el valorador (fase 6). Las cifras NO son un equilibrio definitivo ni salen de simulaciones: se ajustaran empiricamente en perfiles futuros. Los informes que lo usan se etiquetan como PRUEBA.",
+  "base_stats": {
+    "HP": 1000, "ATK": 100, "MAG": 100, "DEF": 100, "RES": 100, "SPD": 100,
+    "ACC": 1.0, "EVA": 0.10, "CRIT": 0.10, "CRIT_DMG": 1.5, "HEAL_REC": 1.0
+  },
+  "budgets": {
+    "small": {"points": 500, "label": "ejemplo (no definitivo)"},
+    "standard": {"points": 1000, "label": "ejemplo (no definitivo)"},
+    "large": {"points": 2000, "label": "ejemplo (no definitivo)"},
+    "epic": {"points": 5000, "label": "ejemplo (no definitivo)"}
+  },
+  "default_budget": "standard",
+  "rounding": {"mode": "round", "decimals": 0},
+  "credit_cap": {"fraction_of_gross": 0.5},
+  "costs": {
+    "stats": {
+      "credit_factor": 0.5,
+      "default": {"formula": "delta * 0.3"},
+      "rules": {
+        "HP": {"formula": "delta * 0.05"},
+        "ATK": {"formula": "delta * 0.6"},
+        "MAG": {"formula": "delta * 0.6"},
+        "DEF": {"formula": "delta * 0.4"},
+        "RES": {"formula": "delta * 0.4"},
+        "SPD": {"formula": "delta * 0.8"},
+        "ACC": {"formula": "delta * 300"},
+        "EVA": {"formula": "delta * 400"},
+        "CRIT": {"formula": "delta * 500"},
+        "CRIT_DMG": {"formula": "delta * 100"},
+        "HEAL_REC": {"formula": "delta * 100"}
+      },
+      "patterns": {
+        "ELEM_AFF.*": {"formula": "delta * 300"},
+        "ELEM_RES.*": {"formula": "delta * 250"}
+      },
+      "custom": {"formula": "abs(value) * 0.2"}
+    },
+    "operations": {
+      "damage": {"formula": "power * 0.35 * (1 + 0.5 * pen_pct) * (1 + 0.15 * always_hit) * (1 + 0.2 * clamp(crit_bonus, 0, 1)) * targets ^ 0.8 * (0.5 + 0.5 * chance) * (1 + 0.2 * true_share)"},
+      "heal": {"formula": "power * 0.3 * targets ^ 0.8 * (0.5 + 0.5 * chance)"},
+      "apply_status": {"formula": "stacks * duration * 2 * (0.4 + 0.6 * chance) * targets ^ 0.8"},
+      "remove_status": {"formula": "count * 4 * (1 + force) * targets ^ 0.8"},
+      "extend_status": {"formula": "abs(amount) * 3"},
+      "transfer_status": {"formula": "count * 8 * (1 + 0.5 * steal)"},
+      "invert_status": {"formula": "count * 6"},
+      "propagate_status": {"formula": "count * 10"},
+      "modify_resource": {"formula": "abs(amount) * 0.3 * (1 + is_max)"},
+      "modify_initiative": {"formula": "abs(amount) * 0.02 + extra_turn * 60"},
+      "modify_cooldown": {"formula": "abs(amount) * 5 + reset * 8"},
+      "summon": {"formula": "count * template_cost * 0.8"},
+      "record_state": {"formula": "what_count * 3"},
+      "restore_state": {"formula": "what_count * 8"},
+      "delayed_effect": {"formula": "inner * 0.9"},
+      "repeat_action": {"formula": "times * 20"},
+      "copy_action": {"formula": "25"}
+    },
+    "ability": {
+      "formula": "effects * (1 / (1 + 0.12 * cooldown)) * (1 / (1 + 0.4 * resource_cost_ratio)) * (1 - 0.25 * limited) * (1 - 0.08 * clamp(requires, 0, 3)) * (1 + 0.1 * is_free) * (0.5 + 0.5 * trigger_chance) * (1 / (1 + 0.1 * cast_time)) + 3 * has_effects",
+      "min": 1
+    },
+    "resource": {"formula": "max * 0.1 + regen * 6"},
+    "status_def": {"formula": "inner + modifiers * 2 + flags * 5 + defense * 6 + has_form * 40"},
+    "weaknesses": {"self_damage": {"formula": "power * 0.15"}},
+    "free": {"basic_attack": true, "ai": true, "operations": ["emit_event", "metric"]}
+  }
+}

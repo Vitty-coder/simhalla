@@ -1,0 +1,6 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "chain_bolt", "name": "Rayo en cadena", "targeting": "enemy", "cost": {"focus": 10}, "tags": ["lightning"],
+   "effects": [{"type": "script", "script": "chain", "args": {"power": 1.2}, "contract": {"max_damage": 430}}]},
+  {"id": "overload", "name": "Sobrecarga", "targeting": "enemy", "cooldown": 3,
+   "effects": [{"type": "script", "script": "overload", "args": {"per_point": 6}}]}
+]}

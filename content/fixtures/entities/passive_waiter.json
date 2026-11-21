@@ -1,0 +1,6 @@
+{
+  "id": "passive_waiter", "name": "Espectador pasivo", "team": "B",
+  "tags": ["fixture"],
+  "basic_attack": false,
+  "ai": {"type": "passive"}
+}

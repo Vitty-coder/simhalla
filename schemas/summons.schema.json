@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.summons/1",
+  "title": "Plantillas de invocacion (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "summons"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.summons/1"
+    },
+    "summons": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 16,
+      "additionalProperties": {
+        "$ref": "common.schema.json#/definitions/summon_template"
+      }
+    }
+  }
+}

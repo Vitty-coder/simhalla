@@ -1,0 +1,4 @@
+{"schema": "simhalla.artifact/1", "id": "focus_staff", "name": "Baston de enfoque",
+ "modifiers": [{"stat": "MAG", "kind": "flat", "value": 30}, {"stat": "CRIT", "kind": "flat", "value": 0.05}],
+ "abilities": [{"id": "staff_strike", "name": "Golpe de baston", "targeting": "enemy",
+   "effects": [{"type": "damage", "components": [{"damage_type": "physical", "formula": "caster.ATK * 0.8 + 40"}]}]}]}

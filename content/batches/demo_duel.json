@@ -1,0 +1,42 @@
+{
+  "schema": "simhalla.batch/1",
+  "name": "demo",
+  "master_seed": 42,
+  "repetitions": 50,
+  "base": {
+    "ruleset_overrides": {
+      "victory": {
+        "limits": {
+          "max_turns": 60,
+          "stagnation_turns": 30
+        }
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "key": "a_vs_b",
+      "label": "A vs B",
+      "entities": [
+        {
+          "path": "res://content/fixtures/entities/attacker_a.json",
+          "overrides": {
+            "id": "a",
+            "team": "A"
+          }
+        },
+        {
+          "path": "res://content/fixtures/entities/attacker_b.json",
+          "overrides": {
+            "id": "b",
+            "team": "B"
+          }
+        }
+      ],
+      "sides": {
+        "A": "attacker_a",
+        "B": "attacker_b"
+      }
+    }
+  ]
+}

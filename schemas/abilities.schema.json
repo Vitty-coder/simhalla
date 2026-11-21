@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.abilities/1",
+  "title": "Habilidades (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "abilities"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.abilities/1"
+    },
+    "abilities": {
+      "$ref": "common.schema.json#/definitions/abilities"
+    }
+  }
+}

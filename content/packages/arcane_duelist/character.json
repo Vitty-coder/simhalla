@@ -1,0 +1,5 @@
+{"schema": "simhalla.character/1", "name": "Duelista arcano", "tags": ["human", "mage"],
+ "stats": {"HP": 700, "MAG": 200, "DEF": 60, "RES": 120, "SPD": 120, "CRIT": 0.15, "ELEM_AFF.fire": 0.15},
+ "basic_attack": true,
+ "imports": [{"package": "examples/core_spells", "version": "^1.0.0", "abilities": ["fireball", "frost_lance", "mend"]}],
+ "ai_ref": {"package": "examples/basic_ai", "version": "^1.0.0", "strategy": "caster_first"}}

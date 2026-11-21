@@ -1,0 +1,1 @@
+{"schema": "simhalla.ai/1", "ai": {"type": "priority_list", "rules": [{"ability": "basic_attack", "target": "lowest_hp_enemy"}]}}

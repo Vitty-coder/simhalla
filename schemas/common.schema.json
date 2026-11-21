@@ -1,0 +1,1449 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.common/1",
+  "title": "Definiciones comunes (v1)",
+  "definitions": {
+    "package_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,31}/[a-z][a-z0-9_]{0,63}$",
+      "description": "namespace/nombre en minusculas"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]{0,8})\\.(0|[1-9][0-9]{0,8})\\.(0|[1-9][0-9]{0,8})(-[0-9A-Za-z]+(\\.[0-9A-Za-z]+)*)?$"
+    },
+    "constraint": {
+      "type": "string",
+      "pattern": "^(\\*|(\\^|~|>=)?(0|[1-9][0-9]{0,8})\\.(0|[1-9][0-9]{0,8})\\.(0|[1-9][0-9]{0,8})(-[0-9A-Za-z.]+)?)$",
+      "description": "*, 1.2.3, ^1.2.3, ~1.2.3, >=1.2.3"
+    },
+    "ident": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "tags": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{0,31}$"
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Estadisticas base; cualquier id es valido (ELEM_AFF.<elem>, ELEM_RES.<elem>, personalizadas)"
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initial": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "regen_per_turn": {
+          "type": "number"
+        }
+      }
+    },
+    "damage_component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "damage_type",
+        "formula"
+      ],
+      "properties": {
+        "damage_type": {
+          "enum": [
+            "physical",
+            "magical",
+            "true"
+          ]
+        },
+        "element": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "formula": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "pen_flat": {
+          "type": "number"
+        },
+        "pen_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "elem_pen": {
+          "type": "number"
+        }
+      }
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "damage",
+            "heal",
+            "apply_status",
+            "remove_status",
+            "extend_status",
+            "transfer_status",
+            "modify_resource",
+            "modify_initiative",
+            "summon",
+            "record_state",
+            "restore_state",
+            "delayed_effect",
+            "repeat_action",
+            "copy_action",
+            "emit_event",
+            "metric",
+            "modify_cooldown",
+            "invert_status",
+            "propagate_status",
+            "script"
+          ]
+        },
+        "on": {
+          "enum": [
+            "targets",
+            "caster",
+            "all_enemies",
+            "all_allies",
+            "random_enemy",
+            "random_ally",
+            "lowest_hp_enemy"
+          ]
+        },
+        "chance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "always_hit": {
+          "type": "boolean"
+        },
+        "can_crit": {
+          "type": "boolean"
+        },
+        "crit_bonus": {
+          "type": "number"
+        },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/definitions/damage_component"
+          }
+        },
+        "formula": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "status": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "stacks": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99
+        },
+        "duration": {
+          "$ref": "#/definitions/duration"
+        },
+        "magnitude": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "tags": {
+          "$ref": "#/definitions/tags"
+        },
+        "beneficial": {
+          "type": "boolean"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "amount": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "add",
+            "set",
+            "steal",
+            "copy",
+            "give",
+            "extra_turn",
+            "reduce",
+            "reset"
+          ]
+        },
+        "resource": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "property": {
+          "enum": [
+            "value",
+            "max"
+          ]
+        },
+        "template": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "lifespan": {
+          "$ref": "#/definitions/duration"
+        },
+        "inherit": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "stat_pct": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "what": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "hp",
+              "resources",
+              "statuses"
+            ]
+          }
+        },
+        "consume": {
+          "type": "boolean"
+        },
+        "delay": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "effects": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "times": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,31}$"
+        },
+        "data": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          }
+        },
+        "ability": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "to": {
+          "enum": [
+            "target_allies",
+            "target_enemies",
+            "caster_allies",
+            "caster_enemies",
+            "all_others",
+            "random_other"
+          ]
+        },
+        "script": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$",
+          "description": "id del script SimScript (scripts/<id>.sim) para el efecto 'script'"
+        },
+        "args": {
+          "type": "object",
+          "maxProperties": 32,
+          "description": "argumentos de datos para el script (escalares, listas y mapas pequenos)"
+        },
+        "contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "max_damage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            },
+            "max_heal": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            }
+          },
+          "description": "contrato mecanico verificable de un efecto script (topes por ejecucion que el motor hace cumplir)"
+        }
+      }
+    },
+    "ability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "action_type": {
+          "enum": [
+            "main",
+            "free",
+            "reaction"
+          ]
+        },
+        "targeting": {
+          "enum": [
+            "enemy",
+            "ally",
+            "self",
+            "any"
+          ]
+        },
+        "target_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "tags": {
+          "$ref": "#/definitions/tags"
+        },
+        "effects": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "cooldown": {
+          "$ref": "#/definitions/duration"
+        },
+        "uses_per_combat": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uses_per_turn": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "charges": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max"
+          ],
+          "properties": {
+            "max": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "initial": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "recharge": {
+              "$ref": "#/definitions/duration"
+            }
+          }
+        },
+        "requires": {
+          "$ref": "#/definitions/conditions"
+        },
+        "trigger": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "event"
+          ],
+          "properties": {
+            "event": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "when": {
+              "$ref": "#/definitions/conditions"
+            },
+            "target": {
+              "enum": [
+                "self",
+                "event_source",
+                "event_target",
+                "lowest_hp_enemy",
+                "first_enemy",
+                "random_enemy"
+              ]
+            },
+            "chance": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "while_dead": {
+              "type": "boolean"
+            },
+            "limit_per_turn": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "passive": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "modifiers": {
+              "type": "array",
+              "maxItems": 64,
+              "items": {
+                "$ref": "#/definitions/modifier"
+              }
+            }
+          }
+        },
+        "cast_time": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "interruptible": {
+          "type": "boolean"
+        },
+        "ignore_taunt": {
+          "type": "boolean"
+        }
+      }
+    },
+    "abilities": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/definitions/ability"
+      }
+    },
+    "ai_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ability"
+      ],
+      "properties": {
+        "ability": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "target": {
+          "enum": [
+            "self",
+            "first_enemy",
+            "lowest_hp_enemy",
+            "highest_hp_enemy",
+            "lowest_hp_ally",
+            "first_ally",
+            "last_attacker"
+          ]
+        },
+        "when": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "number",
+                "boolean"
+              ]
+            }
+          },
+          "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+        },
+        "remember": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "set": {
+              "type": "object",
+              "maxProperties": 8,
+              "additionalProperties": {
+                "type": [
+                  "number",
+                  "boolean",
+                  "string"
+                ]
+              }
+            },
+            "incr": {
+              "type": "object",
+              "maxProperties": 8,
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ai_config": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "passive",
+            "priority_list",
+            "scored",
+            "state_machine",
+            "behavior_tree",
+            "script"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/definitions/ai_rule"
+          }
+        },
+        "weights": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "bias": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "tag_bias": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "modifiers": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "when": {
+                "type": "object",
+                "maxProperties": 16,
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+              },
+              "weights": {
+                "type": "object",
+                "maxProperties": 16,
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "bias": {
+                "type": "object",
+                "maxProperties": 32,
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string"
+          }
+        },
+        "wait_below": {
+          "type": "number"
+        },
+        "initial": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "states": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "strategy"
+            ],
+            "properties": {
+              "strategy": {
+                "$ref": "#/definitions/ai_state_strategy"
+              },
+              "transitions": {
+                "type": "array",
+                "maxItems": 32,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "to"
+                  ],
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "when": {
+                      "type": "object",
+                      "maxProperties": 16,
+                      "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+                    },
+                    "remember": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "set": {
+                          "type": "object",
+                          "maxProperties": 8,
+                          "additionalProperties": {
+                            "type": [
+                              "number",
+                              "boolean",
+                              "string"
+                            ]
+                          }
+                        },
+                        "incr": {
+                          "type": "object",
+                          "maxProperties": 8,
+                          "additionalProperties": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "reactions": {
+          "$ref": "#/definitions/ai_reactions"
+        },
+        "root": {
+          "$ref": "#/definitions/ai_bt_node"
+        },
+        "script": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        }
+      }
+    },
+    "dependency_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package",
+        "version"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "common.schema.json#/definitions/package_id"
+        },
+        "version": {
+          "$ref": "common.schema.json#/definitions/constraint"
+        }
+      }
+    },
+    "duration": {
+      "type": [
+        "number",
+        "object"
+      ],
+      "description": "turnos del afectado (numero) o {unit, amount, event, filter}",
+      "properties": {
+        "unit": {
+          "enum": [
+            "target_turns",
+            "caster_turns",
+            "global_actions",
+            "time",
+            "events",
+            "permanent"
+          ]
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "event": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "filter": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "enum": [
+                "self",
+                "other"
+              ]
+            },
+            "target": {
+              "enum": [
+                "self",
+                "other"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        }
+      }
+    },
+    "modifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stat",
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "stat": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "kind": {
+          "enum": [
+            "set",
+            "flat",
+            "pct_add",
+            "mult",
+            "min",
+            "max"
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "per_stack": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "integer"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "tags": {
+          "$ref": "#/definitions/tags"
+        },
+        "beneficial": {
+          "type": "boolean"
+        },
+        "dispellable": {
+          "type": "boolean"
+        },
+        "group": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "stacking": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "policy": {
+              "enum": [
+                "stack_intensity",
+                "stack_duration",
+                "independent",
+                "refresh",
+                "replace",
+                "keep_strongest",
+                "ignore"
+              ]
+            },
+            "max_stacks": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 99
+            }
+          }
+        },
+        "duration": {
+          "$ref": "#/definitions/duration"
+        },
+        "modifiers": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/definitions/modifier"
+          }
+        },
+        "flags": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "skip_turn": {
+              "type": "boolean"
+            },
+            "suspend_initiative": {
+              "type": "boolean"
+            },
+            "interrupt_channel": {
+              "type": "boolean"
+            },
+            "taunt": {
+              "type": "boolean"
+            },
+            "block_tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "block_action_types": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "main",
+                  "free",
+                  "reaction"
+                ]
+              }
+            },
+            "immune_status_tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "suspend_statuses": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "suspend_cooldowns": {
+              "type": "boolean"
+            }
+          }
+        },
+        "defense": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "immune_damage_types": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "physical",
+                  "magical",
+                  "true"
+                ]
+              }
+            },
+            "immune_elements": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "absorb_elements": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "absorb": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "amount"
+              ],
+              "properties": {
+                "amount": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "damage_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "elements": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "reduction": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "flat": {
+                  "type": "number"
+                },
+                "pct": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "damage_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "block": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "chance": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "pct": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            },
+            "parry": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "chance": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            },
+            "reflect": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pct": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            },
+            "prevent_death": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "survive_hp": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "periodic": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "on",
+              "effects"
+            ],
+            "properties": {
+              "on": {
+                "enum": [
+                  "turn_start",
+                  "turn_end"
+                ]
+              },
+              "effects": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 16,
+                "items": {
+                  "$ref": "#/definitions/effect"
+                }
+              }
+            }
+          }
+        },
+        "on_apply": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "on_expire": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "form": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "add_abilities": {
+              "$ref": "#/definitions/abilities"
+            },
+            "remove_abilities": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,63}$"
+              }
+            },
+            "ai": {
+              "$ref": "#/definitions/ai_config"
+            }
+          }
+        },
+        "on_death": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        }
+      }
+    },
+    "summon_template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "tags": {
+          "$ref": "#/definitions/tags"
+        },
+        "stats": {
+          "$ref": "#/definitions/stats"
+        },
+        "resources": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "$ref": "#/definitions/resource"
+          }
+        },
+        "basic_attack": {
+          "type": "boolean"
+        },
+        "counts_for_victory": {
+          "type": "boolean"
+        },
+        "abilities": {
+          "$ref": "#/definitions/abilities"
+        },
+        "ai": {
+          "$ref": "#/definitions/ai_config"
+        },
+        "statuses": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/definitions/status"
+          }
+        },
+        "summons": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "$ref": "#/definitions/summon_template"
+          }
+        }
+      }
+    },
+    "ai_reactions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": {
+          "enum": [
+            "allow",
+            "decline"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ability"
+            ],
+            "properties": {
+              "ability": {
+                "type": "string",
+                "maxLength": 64
+              },
+              "decision": {
+                "enum": [
+                  "allow",
+                  "decline"
+                ]
+              },
+              "when": {
+                "type": "object",
+                "maxProperties": 16,
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ai_state_strategy": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "passive",
+            "priority_list",
+            "scored",
+            "behavior_tree",
+            "script"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/definitions/ai_rule"
+          }
+        },
+        "weights": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "bias": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "tag_bias": {
+          "type": "object",
+          "maxProperties": 32,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "modifiers": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "when": {
+                "type": "object",
+                "maxProperties": 16,
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+              },
+              "weights": {
+                "type": "object",
+                "maxProperties": 16,
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "bias": {
+                "type": "object",
+                "maxProperties": 32,
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string"
+          }
+        },
+        "wait_below": {
+          "type": "number"
+        },
+        "reactions": {
+          "$ref": "#/definitions/ai_reactions"
+        },
+        "root": {
+          "$ref": "#/definitions/ai_bt_node"
+        },
+        "script": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        }
+      }
+    },
+    "ai_bt_node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "selector",
+            "sequence",
+            "condition",
+            "action",
+            "strategy",
+            "wait",
+            "not",
+            "succeed"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/definitions/ai_bt_node"
+          }
+        },
+        "child": {
+          "$ref": "#/definitions/ai_bt_node"
+        },
+        "when": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "number",
+                "boolean"
+              ]
+            }
+          },
+          "description": "condiciones de IA: ver docs/AI_REFERENCE.md (rutas self.*, mem.*, target.*, predict.*...)"
+        },
+        "remember": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "set": {
+              "type": "object",
+              "maxProperties": 8,
+              "additionalProperties": {
+                "type": [
+                  "number",
+                  "boolean",
+                  "string"
+                ]
+              }
+            },
+            "incr": {
+              "type": "object",
+              "maxProperties": 8,
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "ability": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "target": {
+          "enum": [
+            "self",
+            "first_enemy",
+            "lowest_hp_enemy",
+            "highest_hp_enemy",
+            "lowest_hp_ally",
+            "first_ally",
+            "last_attacker"
+          ]
+        },
+        "strategy": {
+          "$ref": "#/definitions/ai_state_strategy"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 64
+        }
+      }
+    }
+  }
+}

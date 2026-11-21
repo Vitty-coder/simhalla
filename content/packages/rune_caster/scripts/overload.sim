@@ -1,0 +1,9 @@
+// Sobrecarga: gasta TODO el enfoque y lo convierte en dano verdadero.
+fn run(ctx) {
+  let f = res(ctx.caster, "focus");
+  modify_resource(ctx.caster, "focus", -f);
+  deal_damage(ctx.targets[0], f * ctx.args.per_point, {"damage_type": "true"});
+  let n = get_var("overloads");
+  if n == null { n = 0; }
+  set_var("overloads", n + 1);
+}

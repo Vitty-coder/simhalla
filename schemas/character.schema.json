@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.character/1",
+  "title": "Personaje (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "name"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.character/1"
+    },
+    "name": {
+      "$ref": "common.schema.json#/definitions/text"
+    },
+    "tags": {
+      "$ref": "common.schema.json#/definitions/tags"
+    },
+    "stats": {
+      "$ref": "common.schema.json#/definitions/stats"
+    },
+    "basic_attack": {
+      "type": "boolean"
+    },
+    "counts_for_victory": {
+      "type": "boolean"
+    },
+    "imports": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "package",
+          "version",
+          "abilities"
+        ],
+        "properties": {
+          "package": {
+            "$ref": "common.schema.json#/definitions/package_id"
+          },
+          "version": {
+            "$ref": "common.schema.json#/definitions/constraint"
+          },
+          "abilities": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]{0,63}$"
+            }
+          }
+        }
+      }
+    },
+    "ai_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package",
+        "version",
+        "strategy"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "common.schema.json#/definitions/package_id"
+        },
+        "version": {
+          "$ref": "common.schema.json#/definitions/constraint"
+        },
+        "strategy": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        }
+      }
+    }
+  }
+}

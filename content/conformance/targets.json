@@ -1,0 +1,9 @@
+{
+  "schema": "simhalla.perf_targets/1",
+  "provisional": true,
+  "note": "Objetivos de rendimiento PROVISIONALES (duelos/s con traza completa, una sola hebra). Se fijaron con margen sobre lo medido en Linux x86_64 (host compartido de 2 vCPU: simple 26-36, effects 8-10, summons 12-14). Los de movil son una estimacion sin medir en dispositivo: revisarlos con la primera medicion real. No puntuan en la conformidad.",
+  "classes": {
+    "desktop": {"simple": 15.0, "effects": 5.0, "summons": 6.0},
+    "mobile": {"simple": 5.0, "effects": 2.0, "summons": 2.0}
+  }
+}

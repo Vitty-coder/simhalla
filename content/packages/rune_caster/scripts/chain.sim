@@ -1,0 +1,16 @@
+// Rayo en cadena: salta a todos los enemigos vivos; cada salto hace menos dano que el anterior.
+const FALLOFF = 0.6;
+
+fn run(ctx) {
+  let dmg = stat(ctx.caster, "MAG") * ctx.args.power;
+  let pool = [ctx.targets[0]];
+  for e in enemies(ctx.caster) {
+    if e != ctx.targets[0] { push(pool, e); }
+  }
+  for t in pool {
+    deal_damage(t, dmg, {"damage_type": "magical", "element": "lightning"});
+    dmg = dmg * FALLOFF;
+  }
+  metric("chain_jumps", len(pool));
+  emit("chain_done", {"jumps": len(pool)});
+}

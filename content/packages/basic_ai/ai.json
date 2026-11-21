@@ -1,0 +1,8 @@
+{"schema": "simhalla.ai/1", "strategies": {
+  "aggressive": {"type": "priority_list", "rules": [{"ability": "basic_attack", "target": "lowest_hp_enemy"}]},
+  "caster_first": {"type": "priority_list", "rules": [
+    {"ability": "mend", "target": "self", "when": {"self.hp_ratio": {"lt": 0.35}}},
+    {"ability": "fireball", "target": "lowest_hp_enemy"},
+    {"ability": "frost_lance", "target": "lowest_hp_enemy"},
+    {"ability": "basic_attack", "target": "lowest_hp_enemy"}]}
+}}

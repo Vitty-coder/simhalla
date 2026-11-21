@@ -1,0 +1,17 @@
+{
+  "id": "glass_cannon", "name": "Canon de cristal", "team": "A",
+  "tags": ["fixture", "magic"],
+  "stats": {"HP": 600, "MAG": 220, "DEF": 40, "RES": 40, "SPD": 140, "CRIT": 0.25, "ELEM_AFF.fire": 0.2},
+  "resources": {"mana": {"initial": 60, "max": 60}},
+  "basic_attack": true,
+  "abilities": [
+    {"id": "fireball", "name": "Bola de fuego", "action_type": "main", "targeting": "enemy",
+     "cost": {"mana": 20},
+     "effects": [{"type": "damage", "components": [
+       {"damage_type": "magical", "element": "fire", "formula": "caster.MAG * 1.5"}]}]}
+  ],
+  "ai": {"type": "priority_list", "rules": [
+    {"ability": "fireball", "target": "lowest_hp_enemy"},
+    {"ability": "basic_attack", "target": "lowest_hp_enemy"}
+  ]}
+}

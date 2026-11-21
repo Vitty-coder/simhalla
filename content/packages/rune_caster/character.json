@@ -1,0 +1,3 @@
+{"schema": "simhalla.character/1", "name": "Lanzarrunas", "tags": ["human", "mage"],
+ "stats": {"HP": 700, "MAG": 140, "RES": 80, "SPD": 110, "ACC": 0.95},
+ "basic_attack": true}

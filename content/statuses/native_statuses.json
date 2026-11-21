@@ -1,0 +1,25 @@
+{
+  "description": "Estados nativos como DATOS de ejemplo (PROJECT.md 6.3). Los valores matematicos son ILUSTRATIVOS/provisionales: el motor no impone sus efectos; un reglamento o paquete puede sustituirlos.",
+  "statuses": [
+    {"id": "poison", "name": "Veneno", "tags": ["poison", "dot", "debuff"], "stacking": {"policy": "stack_intensity", "max_stacks": 5}, "duration": 4,
+     "periodic": [{"on": "turn_end", "effects": [{"type": "damage", "always_hit": true, "can_crit": false,
+       "components": [{"damage_type": "true", "formula": "target.hp_max * 0.02 * status.stacks"}]}]}]},
+    {"id": "burn", "name": "Quemadura", "tags": ["fire", "dot", "debuff"], "stacking": {"policy": "refresh"}, "duration": 3,
+     "periodic": [{"on": "turn_start", "effects": [{"type": "damage", "always_hit": true, "can_crit": false,
+       "components": [{"damage_type": "magical", "element": "fire", "formula": "status.magnitude"}]}]}]},
+    {"id": "bleed", "name": "Sangrado", "tags": ["physical", "dot", "debuff"], "stacking": {"policy": "stack_intensity", "max_stacks": 3}, "duration": 3,
+     "periodic": [{"on": "turn_end", "effects": [{"type": "damage", "always_hit": true, "can_crit": false,
+       "components": [{"damage_type": "physical", "formula": "status.magnitude * status.stacks"}]}]}]},
+    {"id": "stun", "name": "Aturdimiento", "tags": ["cc", "debuff"], "stacking": {"policy": "refresh"}, "duration": 1,
+     "flags": {"skip_turn": true, "interrupt_channel": true}},
+    {"id": "silence", "name": "Silencio", "tags": ["cc", "debuff"], "stacking": {"policy": "refresh"}, "duration": 2,
+     "flags": {"block_tags": ["spell"]}},
+    {"id": "freeze", "name": "Congelacion", "tags": ["cc", "ice", "debuff"], "stacking": {"policy": "refresh"}, "duration": 1,
+     "flags": {"skip_turn": true, "interrupt_channel": true},
+     "modifiers": [{"stat": "ELEM_RES.fire", "kind": "flat", "value": -0.5, "per_stack": false}]},
+    {"id": "regen", "name": "Regeneracion", "tags": ["heal", "buff"], "beneficial": true, "stacking": {"policy": "refresh"}, "duration": 3,
+     "periodic": [{"on": "turn_start", "effects": [{"type": "heal", "formula": "status.magnitude"}]}]},
+    {"id": "taunt", "name": "Provocacion", "tags": ["cc", "buff"], "beneficial": true, "stacking": {"policy": "refresh"}, "duration": 2,
+     "flags": {"taunt": true}}
+  ]
+}

@@ -1,0 +1,24 @@
+; Engine configuration file.
+; Simhalla - sandbox universal de combates ATB.
+
+config_version=5
+
+[application]
+
+config/name="Simhalla"
+config/description="Sandbox universal de combates ATB (nucleo headless + aplicacion)."
+config/features=PackedStringArray("4.7")
+run/main_scene="res://src/ui/main.tscn"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=6

@@ -1,0 +1,8 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "fireball", "name": "Bola de fuego", "targeting": "enemy", "cost": {"mana": 20}, "tags": ["spell", "fire"],
+   "effects": [{"type": "damage", "components": [{"damage_type": "magical", "element": "fire", "formula": "caster.MAG * 1.5"}]}]},
+  {"id": "frost_lance", "name": "Lanza de escarcha", "targeting": "enemy", "cost": {"mana": 15}, "tags": ["spell", "ice"],
+   "effects": [{"type": "damage", "components": [{"damage_type": "magical", "element": "ice", "formula": "caster.MAG * 1.2", "pen_pct": 0.2}]}]},
+  {"id": "mend", "name": "Remendar", "targeting": "self", "cost": {"mana": 25}, "tags": ["spell", "heal"],
+   "effects": [{"type": "heal", "formula": "caster.MAG * 0.8"}]}
+]}

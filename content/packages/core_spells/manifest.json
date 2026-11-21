@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "examples/core_spells", "version": "1.2.0", "type": "abilities",
+ "name": "Hechizos basicos", "description": "Biblioteca de habilidades reutilizables de ejemplo.", "author": "Simhalla", "license": "CC0-1.0"}

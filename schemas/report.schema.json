@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "simhalla.report/1",
+  "title": "Modelo de informe (v1)",
+  "description": "Modelo versionado de informes individual y masivo (docs/REPORTS.md). JSON, Markdown y HTML se generan de este mismo modelo. Las semillas de 64 bits van como TEXTO. Sin marcas de tiempo.",
+  "type": "object",
+  "required": [
+    "schema",
+    "kind",
+    "meta"
+  ],
+  "properties": {
+    "schema": {
+      "const": "simhalla.report/1"
+    },
+    "kind": {
+      "enum": [
+        "individual",
+        "batch"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "engine_version"
+      ],
+      "properties": {
+        "engine_version": {
+          "type": "string"
+        },
+        "seed": {
+          "type": "string"
+        },
+        "master_seed": {
+          "type": "string"
+        },
+        "log_hash": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "fingerprint": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "plan_fingerprint": {
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      }
+    },
+    "result": {
+      "type": "object"
+    },
+    "duration": {
+      "type": "object"
+    },
+    "damage": {
+      "type": "object"
+    },
+    "healing": {
+      "type": "object"
+    },
+    "attacks": {
+      "type": "object"
+    },
+    "abilities": {
+      "type": "object"
+    },
+    "resources": {
+      "type": "object"
+    },
+    "statuses": {
+      "type": "object"
+    },
+    "defenses": {
+      "type": "object"
+    },
+    "ai": {
+      "type": "object"
+    },
+    "randomness": {
+      "type": "object"
+    },
+    "balance": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "array"
+    },
+    "history": {
+      "type": "object"
+    },
+    "reproduce": {
+      "type": "object"
+    },
+    "sample": {
+      "type": "object"
+    },
+    "scenarios": {
+      "type": "array"
+    },
+    "ranking": {
+      "type": "array"
+    },
+    "matrix": {
+      "type": "object"
+    },
+    "comparisons": {
+      "type": "array"
+    },
+    "methods": {
+      "type": "object"
+    },
+    "measurement": {
+      "type": "object"
+    }
+  }
+}

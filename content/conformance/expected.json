@@ -1,0 +1,143 @@
+{
+  "duels": {
+    "effects": {
+      "end_time": "21ca17b490856f40",
+      "events": 786,
+      "log_hash": "9f486ef3a148b677f5c16e21a8957412c915619a2d80b31d4db953f673f2895e",
+      "outcome": "win",
+      "reason": "last_team_standing",
+      "turns": 52
+    },
+    "glass_vs_tank": {
+      "end_time": "da1f28b76ddb6140",
+      "events": 300,
+      "log_hash": "8cbfae20c4aefce980963a707fb3b0b8aeffb074366d6a0fff2bbe3ee364eeca",
+      "outcome": "win",
+      "reason": "last_team_standing",
+      "turns": 30
+    },
+    "script": {
+      "end_time": "0000000000005e40",
+      "events": 246,
+      "log_hash": "0d0acdc1f2b1731403176869716875862239d0eeda37f273153fa8b72c89300f",
+      "outcome": "win",
+      "reason": "last_team_standing",
+      "turns": 25
+    },
+    "simple": {
+      "end_time": "b3d30feaa20b6140",
+      "events": 281,
+      "log_hash": "b6121dc066f98074a3aea2fac225c74d0ecff81a7304e054e7e0ab7f0c490722",
+      "outcome": "win",
+      "reason": "last_team_standing",
+      "turns": 28
+    },
+    "summons": {
+      "end_time": "a185048c2e3a6040",
+      "events": 579,
+      "log_hash": "7fa29b7da80447e63ba2d9ab40eb8378a7475e28ad11cffecc1f6224ffe61289",
+      "outcome": "draw",
+      "reason": "max_turns",
+      "turns": 60
+    },
+    "temporal_ai": {
+      "end_time": "0000000000806640",
+      "events": 397,
+      "log_hash": "aaa01b4f9b81dbfbd77c078eb8a53252131634bfc2d78f4328281a24b8e56838",
+      "outcome": "win",
+      "reason": "last_team_standing",
+      "turns": 39
+    }
+  },
+  "engine_version": "0.5.0",
+  "examples": {
+    "ai_profiles": "87526541b073e48b1b67798357f9796d23c2e8304cdb47ee2f1cba3044c23fd4",
+    "arcane_duelist": "175545be2f1dd14dc631938d38665de45e2249b9babeb361106deaec9f816f68",
+    "basic_ai": "796fc1ba9365f9c42dc1f0b32203c05996f528b505fd99e14781417c1891a9a4",
+    "core_spells": "f8a7229a8f9d79f78891585e5a12a2588db8315403d18829a4d1199833c2bfc9",
+    "iron_vanguard": "3fba4fd34b6435a94d5866648b521f02ce54160c24c138bc257d15e06ab04876",
+    "rune_caster": "8f1709c37ee968a20a4aed4e9094148da24ca104b29ee3a26354fe5a18eb1902"
+  },
+  "formats": {
+    "f9_343333333333d33f": "0.300000000",
+    "f9_48afbc9af2d77a3e": "0.000000100",
+    "f9_50efe2d6e41a3b44": "500000000000000000000.000000000",
+    "f9_555555555555d53f": "0.333333333",
+    "f9_b76ddbb66ddb7140": "285.714285714",
+    "f9_cd68cb9f0c24fe40": "123456.789012346",
+    "json_full": "{\"a\":0.3333333333333333}",
+    "num6_343333333333d33f": "0.3",
+    "num6_48afbc9af2d77a3e": "0.0",
+    "num6_50efe2d6e41a3b44": "500000000000000000000.0",
+    "num6_555555555555d53f": "0.333333",
+    "num6_b76ddbb66ddb7140": "285.714286",
+    "num6_cd68cb9f0c24fe40": "123456.789012",
+    "parse": "3333333333330640",
+    "str_343333333333d33f": "0.3",
+    "str_48afbc9af2d77a3e": "0.0000001",
+    "str_50efe2d6e41a3b44": "500000000000000000000.0",
+    "str_555555555555d53f": "0.33333333333333",
+    "str_b76ddbb66ddb7140": "285.714285714286",
+    "str_cd68cb9f0c24fe40": "123456.789012346"
+  },
+  "formulas": {
+    "abs(-caster.MAG) / 7": "6edbb66ddb363e40",
+    "caster.ATK * 1.5 + 12": "0000000000306b40",
+    "caster.MAG ^ 0.75": "0878c878edba4b40",
+    "clamp(caster.hp_ratio * 400, 50, 300) % 17": "0000000000002840",
+    "max(10, caster.ATK - target.DEF * 0.4) ^ 1.2": "c5c9cd0efc097040",
+    "sqrt(caster.ATK) * 3.3 / (1 + target.DEF / 100)": "ec2afad4a48b3440"
+  },
+  "hashes": {
+    "json_hash": "40267967cc8bf3e88bc933cc6365e1a92f6ef7c0526856de7e6b25c781e0ce55",
+    "report_norm": "{\"x\":1,\"y\":29,\"z\":\"0.333333333\"}",
+    "sha256": "abb566369d2eff1cd3a2fab82dbad4cebefd2b5d6c4d4abf1b90efaf5ac3a73a"
+  },
+  "libm_extra": {
+    "atan2": "4fbb610567acdd3f",
+    "cos1": "8c06b50f284ae13f",
+    "exp1": "6957148b0abf0540",
+    "log2": "ef39fafe422ee63f",
+    "sin1": "ee0c098f54edea3f",
+    "tan1": "a6e3be5c24ebf83f"
+  },
+  "math": {
+    "add": "343333333333d33f",
+    "big_add": "04003426f56b0c43",
+    "ceil": "0000000000000840",
+    "clamp": "000000000000f83f",
+    "div": "555555555555d53f",
+    "floor": "00000000000008c0",
+    "fmod": "989999999999e93f",
+    "harmonic_1000": "18e6f4451ff11d40",
+    "int_cast": "000000000024fe40",
+    "mul_chain": "a246af3777dd6040",
+    "pow_cost": "6c40db3c67e1e23f",
+    "pow_frac": "8e9ac54d0b440340",
+    "pow_half": "cd3b7f669ea0f63f",
+    "pow_int": "3e02030cfcbf0440",
+    "pow_neg": "0202370c6ad9e13f",
+    "round_half": "0000000000000840",
+    "round_neg": "00000000000008c0",
+    "rounding_2dp": "713d0ad7a3700540",
+    "sqrt2": "cd3b7f669ea0f63f",
+    "sqrt_big": "51e569378eb3c540",
+    "time_scale": "0000000020531441",
+    "tiny": "2be6708b68120000"
+  },
+  "reference": {
+    "arch": "x86_64",
+    "godot": "4.7.2-stable (official)",
+    "os": "Linux"
+  },
+  "rng": {
+    "floats": "dab0f372abb8ea3f,683a53e1b4ade83f,39e32c8d737de13f,a6c50bb0febde23f",
+    "fnv": "1379137772696625066",
+    "ints": "843630,364733,958367,967159,360997,852770",
+    "mix": "-2893567902102913444",
+    "state": "3326683751098131943",
+    "stream_crit": "38825e75be8fe03f",
+    "stream_hit": "379466792"
+  },
+  "schema": "simhalla.conformance_expected/1"
+}

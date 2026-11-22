@@ -198,7 +198,7 @@ Especificación completa: `docs/SCRIPTING_API.md`; ejemplo: `content/packages/ru
 ## 11. Presupuesto y equilibrio (provisional)
 
 - **Cada personaje tiene un coste de creación (PC)** calculado automáticamente con un perfil externo. El perfil por defecto es **ILUSTRATIVO** (cifras de prueba,
-  no definitivas): `builtin/reference_costs`. Presupuestos de ejemplo: `small 500, standard 1000, large 2000, epic 5000`.
+  no definitivas): `builtin/reference_costs`. Presupuestos de ejemplo: `small 200, standard 400, large 800, epic 2000` (el `standard` se fijó en 400 para que cuadre con el coste de las plantillas; provisional).
 - **Modo libre** (por defecto): sin límite; solo avisa. **Modo reglamentado**: exige estar dentro del presupuesto y que todo sea evaluable.
 - **Igualdad de PC no implica igualdad de poder.** El criterio de equilibrio práctico es el **resultado en duelos**: apunta a **35–65 % de victorias** contra el
   conjunto de oponentes de serie y duelos de 6–30 turnos. Usa `tools/character_check.gd` (§12) y ajusta.
@@ -213,7 +213,7 @@ Especificación completa: `docs/SCRIPTING_API.md`; ejemplo: `content/packages/ru
 | `character_caster` | 390 | 31 % | algo débil |
 | `character_status_user` | 466 | 69 % | fuerte |
 
-Los costes **no** están calibrados con contenido real: no presumas que más PC = más fuerte. Un calibrador empírico existe (`docs/BALANCE_RULES.md` §6).
+Con el `standard` en 400, `character_status_user` (466) lo supera: en modo reglamentado se rechazaría (en libre solo avisa). Los costes **no** están calibrados con contenido real: no presumas que más PC = más fuerte. Un calibrador empírico existe (`docs/BALANCE_RULES.md` §6).
 
 ## 12. Flujo de trabajo OBLIGATORIO (ciclo de retroalimentación)
 

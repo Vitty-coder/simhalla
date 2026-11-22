@@ -9,10 +9,10 @@
     "ACC": 1.0, "EVA": 0.10, "CRIT": 0.10, "CRIT_DMG": 1.5, "HEAL_REC": 1.0
   },
   "budgets": {
-    "small": {"points": 500, "label": "ejemplo (no definitivo)"},
-    "standard": {"points": 1000, "label": "ejemplo (no definitivo)"},
-    "large": {"points": 2000, "label": "ejemplo (no definitivo)"},
-    "epic": {"points": 5000, "label": "ejemplo (no definitivo)"}
+    "small": {"points": 200, "label": "ejemplo (no definitivo)"},
+    "standard": {"points": 400, "label": "ejemplo (no definitivo)"},
+    "large": {"points": 800, "label": "ejemplo (no definitivo)"},
+    "epic": {"points": 2000, "label": "ejemplo (no definitivo)"}
   },
   "default_budget": "standard",
   "rounding": {"mode": "round", "decimals": 0},

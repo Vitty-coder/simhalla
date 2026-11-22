@@ -474,7 +474,7 @@ func test_free_mode_warns_regulated_mode_rejects() -> void:
 	var fits := _eval({"stats": {"ATK": 150}}, {"mode": "regulated", "budget": "small"})
 	assert_true(fits.valid())
 	assert_true(fits.within_budget())
-	assert_almost(fits.remaining, 470.0)
+	assert_almost(fits.remaining, float(_profile().budgets["small"]["points"]) - 30.0, 1e-9)
 	# categorias de presupuesto distintas
 	for b in ["small", "standard", "large", "epic"]:
 		assert_almost(_eval({}, {"budget": b}).budget_points, float(_profile().budgets[b]["points"]))

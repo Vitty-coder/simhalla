@@ -98,7 +98,7 @@ func test_options_vs_budget_and_deps() -> void:
 	assert_eq(vs["duels"]["opponents"][0]["games"], 2, "2 repeticiones, el personaje como equipo A")
 	var small := CharacterCheck.run(p, {"reps": 2, "budget": "small", "vs": ["examples/iron_vanguard"]})
 	assert_eq(small["cost"]["budget_id"], "small")
-	assert_eq(small["cost"]["budget_points"], 500.0)
+	assert_eq(small["cost"]["budget_points"], 200.0)
 	var bad_budget := CharacterCheck.run(p, {"budget": "no_existe"})
 	assert_false(bad_budget["ok"])
 	# dependencia propia: un personaje que usa una biblioteca del creador

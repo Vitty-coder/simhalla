@@ -1,0 +1,3 @@
+{"schema": "simhalla.character/1", "name": "Soldado raso", "tags": ["human", "warrior"],
+ "stats": {"HP": 1100, "ATK": 120, "DEF": 110, "SPD": 100},
+ "basic_attack": true}

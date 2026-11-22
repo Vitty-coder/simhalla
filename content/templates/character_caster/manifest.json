@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_caster", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: lanzador de hechizos", "description": "Recurso (mana), habilidades con coste y cooldown, curacion, y una IA priority_list con condiciones.", "author": "Simhalla", "license": "CC0-1.0"}

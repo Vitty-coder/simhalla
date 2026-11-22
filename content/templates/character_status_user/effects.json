@@ -1,0 +1,6 @@
+{"schema": "simhalla.effects/1", "statuses": [
+  {"id": "scorch", "name": "Abrasado", "tags": ["dot", "fire"], "beneficial": false, "dispellable": true,
+   "stacking": {"policy": "stack_intensity", "max_stacks": 4}, "duration": 3,
+   "modifiers": [{"stat": "DEF", "kind": "pct_add", "value": -0.05, "per_stack": true}],
+   "periodic": [{"on": "turn_end", "effects": [{"type": "damage", "components": [{"damage_type": "magical", "element": "fire", "formula": "status.stacks * 25 + caster.MAG * 0.1"}]}]}]}
+]}

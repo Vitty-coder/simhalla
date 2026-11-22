@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_summoner", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: invocador", "description": "Plantilla de invocacion (entidad completa con su IA), habilidad que invoca y veneno como estado nativo.", "author": "Simhalla", "license": "CC0-1.0"}

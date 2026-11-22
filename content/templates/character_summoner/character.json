@@ -1,0 +1,3 @@
+{"schema": "simhalla.character/1", "name": "Invocador", "tags": ["human", "summoner"],
+ "stats": {"HP": 850, "MAG": 150, "DEF": 90, "RES": 110, "SPD": 100},
+ "basic_attack": true}

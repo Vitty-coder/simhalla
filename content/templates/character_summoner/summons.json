@@ -1,0 +1,3 @@
+{"schema": "simhalla.summons/1", "summons": {
+  "wolf": {"name": "Lobo espectral", "stats": {"HP": 250, "ATK": 90, "SPD": 120}, "basic_attack": true,
+           "ai": {"type": "priority_list", "rules": [{"ability": "basic_attack", "target": "lowest_hp_enemy"}]}}}}

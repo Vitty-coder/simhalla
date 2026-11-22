@@ -1,0 +1,3 @@
+{"schema": "simhalla.character/1", "name": "Hechicera", "tags": ["human", "mage"],
+ "stats": {"HP": 800, "MAG": 170, "DEF": 80, "RES": 130, "SPD": 105, "CRIT": 0.15, "ELEM_AFF.fire": 0.1},
+ "basic_attack": true}

@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_minimal", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: personaje minimo", "description": "El personaje valido mas pequeno: solo estadisticas y el ataque basico universal.", "author": "Simhalla", "license": "CC0-1.0"}

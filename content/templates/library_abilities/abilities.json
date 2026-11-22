@@ -1,0 +1,6 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "power_strike", "name": "Golpe potente", "action_type": "main", "targeting": "enemy", "cooldown": 2, "tags": ["melee"],
+   "effects": [{"type": "damage", "components": [{"damage_type": "physical", "formula": "caster.ATK * 1.6"}]}]},
+  {"id": "second_wind", "name": "Segundo aliento", "action_type": "main", "targeting": "self", "cooldown": 4, "uses_per_combat": 2, "tags": ["heal"],
+   "effects": [{"type": "heal", "formula": "caster.hp_max * 0.2"}]}
+]}

@@ -1,0 +1,6 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "call_wolf", "name": "Invocar lobo", "action_type": "main", "targeting": "self", "cost": {"mana": 30}, "cooldown": 4, "uses_per_combat": 3, "tags": ["summon"],
+   "effects": [{"type": "summon", "template": "wolf", "count": 1, "lifespan": {"unit": "target_turns", "amount": 5}}]},
+  {"id": "venom_dart", "name": "Dardo venenoso", "action_type": "main", "targeting": "enemy", "cost": {"mana": 15}, "tags": ["spell", "dot"],
+   "effects": [{"type": "apply_status", "status": "poison", "stacks": 1, "duration": 4, "chance": 0.9}]}
+]}

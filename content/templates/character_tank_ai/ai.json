@@ -1,0 +1,5 @@
+{"schema": "simhalla.ai/1", "ai": {"type": "scored",
+  "weights": {"damage": 1.0, "lethal": 2.0, "cost": -0.2},
+  "bias": {"iron_skin": 0.4},
+  "modifiers": [{"when": {"self.hp_ratio": {"lt": 0.5}}, "bias": {"iron_skin": 0.6}}],
+  "wait_below": 0.02}}

@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/library_ai", "version": "1.0.0", "type": "ai",
+ "name": "Plantilla: biblioteca de IA", "description": "Estrategias nombradas reutilizables via ai_ref.", "author": "Simhalla", "license": "CC0-1.0"}

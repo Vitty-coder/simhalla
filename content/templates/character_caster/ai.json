@@ -1,0 +1,5 @@
+{"schema": "simhalla.ai/1", "ai": {"type": "priority_list", "rules": [
+  {"ability": "mend", "target": "self", "when": {"self.hp_ratio": {"lt": 0.4}}},
+  {"ability": "meteor", "target": "lowest_hp_enemy"},
+  {"ability": "firebolt", "target": "lowest_hp_enemy"},
+  {"ability": "basic_attack", "target": "lowest_hp_enemy"}]}}

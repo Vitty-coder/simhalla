@@ -1,0 +1,5 @@
+{"schema": "simhalla.ai/1", "strategies": {
+  "bruiser": {"type": "priority_list", "rules": [
+    {"ability": "second_wind", "target": "self", "when": {"self.hp_ratio": {"lt": 0.4}}},
+    {"ability": "power_strike", "target": "lowest_hp_enemy"},
+    {"ability": "basic_attack", "target": "lowest_hp_enemy"}]}}}

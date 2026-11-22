@@ -1,0 +1,4 @@
+{"schema": "simhalla.ai/1", "ai": {"type": "priority_list", "rules": [
+  {"ability": "call_wolf", "target": "self", "when": {"ally.alive_count": {"lt": 1}}},
+  {"ability": "venom_dart", "target": "highest_hp_enemy", "when": {"target.status.poison": {"lt": 1}}},
+  {"ability": "basic_attack", "target": "lowest_hp_enemy"}]}}

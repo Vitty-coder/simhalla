@@ -1,0 +1,3 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_with_libraries", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: personaje con bibliotecas", "description": "Importa habilidades (imports) y una IA (ai_ref) de paquetes de biblioteca declarados como dependencias.", "author": "Simhalla", "license": "CC0-1.0",
+ "dependencies": [{"id": "templates/library_abilities", "version": "^1.0.0"}, {"id": "templates/library_ai", "version": "^1.0.0"}]}

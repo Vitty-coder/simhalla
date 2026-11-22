@@ -1,0 +1,1 @@
+{"schema": "simhalla.resources/1", "resources": {"mana": {"initial": 70, "min": 0, "max": 70, "regen_per_turn": 6}}}

@@ -588,6 +588,7 @@ Determinismo PC↔Android sin verificar; APK de Android exportado pero no ejecut
 
 | Fecha | Cambio |
 |---|---|
+| 2026-11-21 | Kit para IAs creadoras de personajes: `docs/AI_CREATOR_KIT.md`, 8 plantillas validadas (`content/templates/`) y `CharacterCheck`/`tools/character_check.gd` (valida, valora y prueba en duelos); 480 casos OK. |
 | 2026-11-21 | Historial/exportación de biblioteca, migraciones de esquema (`SchemaMigrator`), objetivos de rendimiento provisionales (`targets.json`) y calibrador empírico de costes (`BalanceCalibrator`, `tools/calibrate_tool.gd`); 470 casos OK; pantalla de calibración, auditoría de maquetación móvil (D-120: la navegación pedía 585 px a 360 px) y corrección de bundles (orden de importación y dependencias transitivas, D-122); la batería de plataforma incluye un flujo de aplicación completo. |
 | 2026-11-20 | Fase 10: `PlatformCheck` + pantalla Plataforma + `--selftest`, `FilePicker` (nativo/diálogo/bandeja), ejemplos incluidos, presets Linux/Android, scripts de compilación y verificación, `docs/PLATFORMS.md`, `docs/LICENSES.md`, pruebas `test_platform.gd` (445 casos). Android no ejecutado en dispositivo. |
 | 2026-11-20 | Fase 9 completada: `AppStorage`/`VersionedStore`/`RecordStore`/`BundleIO`, `AppController` y modelos de aplicación, interfaz `MainUI` con 9 pantallas y widgets, `LocaleService` (es/en), retratos, `ruleset_data`/`profile_data`/`data`/`hash` en `DuelRunner`, `BatchResult.to_storable`; 26 pruebas nuevas (434 en total). |

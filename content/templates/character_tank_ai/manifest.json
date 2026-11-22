@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_tank_ai", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: tanque con IA puntuada", "description": "Habilidad pasiva, reaccion disparada por evento, estado propio via habilidades y IA scored con pesos.", "author": "Simhalla", "license": "CC0-1.0"}

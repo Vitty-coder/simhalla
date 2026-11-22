@@ -1,0 +1,7 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "ignite", "name": "Prender", "action_type": "main", "targeting": "enemy", "cost": {"mana": 18}, "tags": ["spell", "fire"],
+   "effects": [{"type": "damage", "components": [{"damage_type": "magical", "element": "fire", "formula": "caster.MAG * 0.9"}]},
+               {"type": "apply_status", "status": "scorch", "stacks": 1, "duration": 3}]},
+  {"id": "cinder_heal", "name": "Calor de brasas", "action_type": "main", "targeting": "self", "cost": {"mana": 20}, "cooldown": 3, "tags": ["spell", "heal"],
+   "effects": [{"type": "heal", "formula": "caster.MAG * 1.0"}, {"type": "modify_resource", "resource": "mana", "amount": 15, "mode": "add"}]}
+]}

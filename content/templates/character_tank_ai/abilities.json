@@ -1,0 +1,11 @@
+{"schema": "simhalla.abilities/1", "abilities": [
+  {"id": "shield_bash", "name": "Golpe de escudo", "action_type": "main", "targeting": "enemy", "cost": {"stamina": 15}, "cooldown": 2, "tags": ["melee"],
+   "effects": [{"type": "damage", "components": [{"damage_type": "physical", "formula": "caster.ATK * 0.8 + caster.DEF * 0.4"}]}]},
+  {"id": "iron_skin", "name": "Piel de hierro", "action_type": "free", "targeting": "self", "cost": {"stamina": 10}, "uses_per_combat": 2, "tags": ["buff"],
+   "effects": [{"type": "apply_status", "status": "fortified", "duration": 3, "on": "caster"}]},
+  {"id": "retaliate", "name": "Represalia", "action_type": "reaction", "targeting": "enemy", "tags": ["melee"],
+   "trigger": {"event": "damage_dealt", "when": {"event.target": {"eq": "self"}, "event.amount": {"gt": 0}}, "target": "event_source", "chance": 0.35, "limit_per_turn": 1},
+   "effects": [{"type": "damage", "components": [{"damage_type": "physical", "formula": "caster.ATK * 0.5"}]}]},
+  {"id": "toughness", "name": "Dureza", "action_type": "free", "targeting": "self", "tags": ["passive"],
+   "passive": {"modifiers": [{"stat": "RES", "kind": "flat", "value": 25}]}, "effects": []}
+]}

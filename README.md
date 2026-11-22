@@ -25,6 +25,13 @@ Primera ejecución tras clonar: `godot --headless --path . --import` (o simpleme
 ## Plataformas
 Exportación Linux/Android, conformidad multiplataforma (`--selftest`, pantalla Plataforma) y límites: `docs/PLATFORMS.md`. Licencias: `docs/LICENSES.md`. Guía de uso: `docs/USER_GUIDE.md`.
 
+## Kit para IAs creadoras de personajes
+`docs/AI_CREATOR_KIT.md` es una guía **autosuficiente** (se pega entera como instrucciones a una IA): formato de paquete, habilidades, efectos, fórmulas, estados, IA, presupuesto, errores frecuentes y lista de comprobación. Acompañan 8 plantillas validadas (`content/templates/`) y la herramienta de retroalimentación:
+```
+godot --headless --path . --script res://tools/character_check.gd -- ruta/mi_personaje --reps 10 --seed 1 [--deps ruta] [--vs pkg:id] [--budget standard] [--json]
+```
+Valida e importa en una biblioteca temporal, valora el coste, lo enfrenta a los oponentes de serie y da un diagnóstico (habilidades sin usar, % de victorias, duelos muy cortos/largos, presupuesto).
+
 ## Ejecutable de Windows
 `dist/simhalla-windows-x64.zip` contiene `simhalla.exe` (Windows x86_64, un solo archivo con los datos embebidos; no necesita instalar nada).
 1. Descomprímelo y ejecuta `simhalla.exe`. Windows SmartScreen avisará de «editor desconocido» porque **no está firmado**: «Más información → Ejecutar de todos modos».

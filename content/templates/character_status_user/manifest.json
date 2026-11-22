@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/character_status_user", "version": "1.0.0", "type": "character",
+ "name": "Plantilla: estados propios y maquina de estados", "description": "Estado propio con dano periodico y modificadores, y una IA state_machine que alterna ataque y recuperacion.", "author": "Simhalla", "license": "CC0-1.0"}

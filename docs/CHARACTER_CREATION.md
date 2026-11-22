@@ -1,5 +1,7 @@
 # CHARACTER_CREATION — Crear un PJ válido (fase 1)
 
+> **¿Eres una IA (o quieres darle instrucciones a una)?** Usa [`AI_CREATOR_KIT.md`](AI_CREATOR_KIT.md): guía autosuficiente, plantillas validadas en `content/templates/` y la herramienta `tools/character_check.gd` (valida, valora y prueba el personaje en duelos).
+
 > Hay dos vías: (A) **paquete** importable (carpeta/ZIP con `manifest.json`, versiones y
 > dependencias) — la vía normal, ver [`PACKAGES.md`](PACKAGES.md); (B) un único JSON de
 > entidad para pruebas rápidas. Costes de creación (PC): **fase 6** — hasta entonces un PJ

@@ -1,0 +1,5 @@
+{"schema": "simhalla.character/1", "name": "Bruto", "tags": ["human", "warrior"],
+ "stats": {"HP": 1300, "ATK": 140, "DEF": 130, "SPD": 95},
+ "basic_attack": true,
+ "imports": [{"package": "templates/library_abilities", "version": "^1.0.0", "abilities": ["power_strike", "second_wind"]}],
+ "ai_ref": {"package": "templates/library_ai", "version": "^1.0.0", "strategy": "bruiser"}}

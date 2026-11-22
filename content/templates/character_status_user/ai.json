@@ -1,0 +1,7 @@
+{"schema": "simhalla.ai/1", "ai": {"type": "state_machine", "initial": "attack", "states": {
+  "attack": {"strategy": {"type": "priority_list", "rules": [
+      {"ability": "ignite", "target": "lowest_hp_enemy"}, {"ability": "basic_attack", "target": "lowest_hp_enemy"}]},
+    "transitions": [{"to": "recover", "when": {"self.hp_ratio": {"lt": 0.35}}}]},
+  "recover": {"strategy": {"type": "priority_list", "rules": [
+      {"ability": "cinder_heal", "target": "self"}, {"ability": "basic_attack", "target": "lowest_hp_enemy"}]},
+    "transitions": [{"to": "attack", "when": {"self.hp_ratio": {"ge": 0.6}}}]}}}}

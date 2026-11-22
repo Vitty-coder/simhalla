@@ -1,0 +1,3 @@
+{"schema": "simhalla.character/1", "name": "Guardian", "tags": ["human", "tank"],
+ "stats": {"HP": 1600, "ATK": 105, "DEF": 220, "RES": 120, "SPD": 85, "ELEM_RES.fire": 0.15},
+ "basic_attack": true}

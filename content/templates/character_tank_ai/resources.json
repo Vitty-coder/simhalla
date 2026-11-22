@@ -1,0 +1,1 @@
+{"schema": "simhalla.resources/1", "resources": {"stamina": {"initial": 50, "min": 0, "max": 50, "regen_per_turn": 5}}}

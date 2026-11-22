@@ -1,0 +1,2 @@
+{"schema": "simhalla.manifest/1", "id": "templates/library_abilities", "version": "1.0.0", "type": "abilities",
+ "name": "Plantilla: biblioteca de habilidades", "description": "Habilidades reutilizables por varios personajes via imports.", "author": "Simhalla", "license": "CC0-1.0"}
